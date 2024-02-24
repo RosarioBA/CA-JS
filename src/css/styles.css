@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "Raleway";
+  src: url("../Font/static/Raleway-Bold.ttf") format("truetype");
+}
+
+.logo { 
+
+  position: absolute;
+  width: 200px;
+  height: 109px;
+  left: 10px;
+  top: 0px;
+  background: url('Images/SquareEyes_Logo.png');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  }
+
+body {
+background-color: rgba(64, 64, 64, 1);
+margin: 0;
+padding: 0;
+min-height: 100vh;
+max-width: 100%;
+display: flex;
+flex-direction: column;
+overflow-x: hidden;
+}
+
+h1{
+  font-family: "Raleway";
+  src: url("../Font/static/Raleway-Bold.ttf") format("truetype");
+  position: relative;
+  color:  white;
+}
+
+h2 {
+  font-family: "Libre Baskerville" Georgia, 'Times New Roman', Times, serif;
+  src: url(../Font/LibreBaskerville-Regular.ttf) format(truetype);
+  color:  white;
+  padding-bottom: 20px;
+  color:white
+}
+
+h3 {
+  font-family: "Libre Baskerville" Georgia, 'Times New Roman', Times, serif;
+  src: url(../Font/LibreBaskerville-Regular.ttf) format(truetype);
+  color:  white;
+}
+
+
+header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+  }
+      
+
+nav {
+display: none;
+position: static;
+top: 0px;
+}
+
+main {
+  flex: 1; 
+}
+
+p {
+  color: white;
+}
+
+nav ul{
+  padding: 0px;
+}
+
+
+nav li {
+  display: block;
+  padding: 20px 30px;
+  text-align: center;
+}
+
+#hamburger-menu {
+  display: none;
+}
+
+#hamburger-menu:checked ~ nav {
+  display: block;
+
+}
+
+header, 
+footer {
+  background-color: rgba(132, 132, 132, 1);
+  font-size: 1.1em;
+  padding: 30px
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  justify-content: space-evenly;
+}
+
+/*Links*/ 
+
+a{
+  text-decoration: none;
+}
+
+
+header a, 
+footer a{
+  color: white;
+}
+
+header {
+  color: white;
+}
+
+.cta {
+  background-color: rgba(89, 10, 10, 1);
+  outline-color: rgba(50, 2, 2, 1);
+  color: white;
+  font-size: 1em;
+  text-transform: uppercase;
+  padding: 20px 60px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+.cta-small {
+  background-color: rgba(89, 10, 10, 1);
+  color: white;
+  padding: 8px 40px;
+  font-size: 0.8em;
+  min-width: 51.2px;
+  text-align: left;
+  margin-top: 5px;
+  margin: auto 50px
+}

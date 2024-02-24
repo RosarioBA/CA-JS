@@ -1,0 +1,16 @@
+.about-us {
+    max-width: 1000px;
+    text-align: left;
+    margin: auto;
+    padding: 50px;
+}
+
+.about-us-text {
+    color: white;
+    text-align: left;
+    margin:auto
+}
+
+.about-us-text div{
+margin-bottom: 40px;
+}

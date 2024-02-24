@@ -1,0 +1,10 @@
+.successful-payment {
+    max-width: 1000px;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+.successful-payment img {
+    width: 80%;
+}

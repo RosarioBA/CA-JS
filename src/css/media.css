@@ -1,0 +1,55 @@
+@media (min-width:400px) {
+    .product-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .checkout-first {
+        flex-direction: row;
+    }
+
+    header {
+        justify-content: space-evenly;
+    }
+}
+
+@media (min-width:600px) {
+      nav {
+        display: block;
+        position: static;
+        top: 0px;
+    }
+    nav li {
+        display: inline-block;   
+}
+
+    header label {
+        display: none;
+    }
+
+    footer,
+    header {
+        padding: 0px;
+    }
+
+    .movie-specific-text{
+        flex-direction: row;
+    }
+}
+
+@media (min-width:900px) {
+    .welcome-content {
+        left: 100px;
+    }
+
+    .successful-payment {
+        margin: auto 350px;
+    }
+
+    .about-us {
+        margin: auto 300px;
+        }
+    
+    .contact {
+    margin: 50px 400px
+        }
+}
