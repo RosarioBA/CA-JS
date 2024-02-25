@@ -34,6 +34,9 @@
         <!--div class="cart-content">
           <div class="cart-items"-->
       </section>
+      <section class="loading-indicator" style="display: none;">
+        <p>Loading...</p>
+      </section>
       <section class="errors">
       </section>
       <section class="movies-list">
@@ -64,10 +67,16 @@ function generateMovieHTML(movie) {
   
   (async function() {
     try {
+      showLoadingIndicator();
       // for testing the errors
       // throw new Error("This is an error");
       const movies = await getAllProducts(options);
 
+      // simulate a slow network
+      // await new Promise(resolve => setTimeout(resolve, 10000));
+
+      hideLoadingIndicator();
+ 
       function createGenreFilter(movies) {
           // display all genres in alphabetical order
           // first extract them from the movies
@@ -100,6 +109,7 @@ function generateMovieHTML(movie) {
         moviesSection.innerHTML += movieHTML;
       });
     } catch (error) {
+      hideLoadingIndicator();
       displayErrors(error);
     }
   })();

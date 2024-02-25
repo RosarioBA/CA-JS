@@ -75,3 +75,13 @@ function displayErrors(error) {
   // logging the error to the console is acceptable for now
   console.error(error);
 }
+
+function hideLoadingIndicator() {
+  const loadingIndicator = document.querySelector(".loading-indicator");
+  loadingIndicator.style.display = "none";
+}
+
+function showLoadingIndicator() {
+  const loadingIndicator = document.querySelector(".loading-indicator");
+  loadingIndicator.style.display = "block";
+}
