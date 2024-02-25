@@ -41,3 +41,43 @@
 .welcome-content h2 {
     font-size: 1.3em;
 }
+
+/*shopping-cart*/
+.fas fa-cart-shopping
+/*new*/
+
+.movie-single p a {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    margin: auto;
+    padding: auto;
+    min-height: 100vh;
+    max-width: 100%;
+}
+.movie-single p a > *{
+    flex: 1;
+}
+.movie-single p a img {
+    max-width: 100%;
+    height: 200px;
+    margin: 0;
+    padding: 0;
+}
+
+.movie-single p a p{
+ /*   display: flex;
+    flex-direction: column;*/
+    font-size: 1.3em;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.cart-row img {
+    max-width: 100%;
+    height: 200px;
+    margin: 0;
+    padding: 0;
+}

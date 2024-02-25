@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Find your new favorite movie" />
+    <title> Square Eyes | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link href="/src/css/styles.css" rel="stylesheet">
+    <link href="/src/css/index.css" rel="stylesheet"/>
+    <link href="/src/css/media.css" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/78ab2dacf1.js" crossorigin="anonymous"></script>
+    <script src="/src/js/backend.js"></script>
+    <script src="/src/js/cart.js"></script>
+  </head>
+  <body class="frontpage">
+    <header>
+      <a href="index.html" class="logo"></a>
+      <label for="hamburger-menu"><i class="fa-solid fa-bars"></i></label>
+      <input type="checkbox" id="hamburger-menu"/>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/terms.html">About</a></li>
+          <li><a href="/privacy.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="checkout">
+      <section class="cart">
+        <h1>Films</h1>
+        <div class="checkout-list">
+        </div>
+        <div>
+            <a href="/checkout/confirmation/index.html" class="cta-small">Confirm</a>
+        </div>
+        <script>
+function generateMovieHTML(movie, count) {
+  return `
+    <div class="cart-row">
+        <img src="${movie.image.url}" alt="${movie.title}">
+        <p>Title: ${movie.title}</p>
+        <button class="cta-small" onclick="javascript:removeOneFromCart('${movie.id}'); displayCart();">-</button>
+        <p>count: ${count}</p>
+        <button class="cta-small" onclick="javascript:addOneToCart('${movie.id}'); displayCart();">+</button>
+        <button class="cta-small" onclick="javascript:removeAllFromCart('${movie.id}'); displayCart();">Delete</button>
+    </div>
+  `;
+  }
+
+  function resetCartDiv() {
+    const cartSection = document.querySelector(".checkout-list");
+    cartSection.innerHTML = "";
+  }
+
+  // get all products from the cart using card.js
+  // and display them in the cart section under checkout-list
+  function displayCart() {
+    resetCartDiv();
+    cart = getCart();
+    Object.keys(cart).forEach(function (id) {
+      // console.log(id);
+      var count = cart[id];
+      // because we fetch data async from the backend
+      // the order in which the products are added might be different
+      // this is not ideal frm a UX perspective
+      getProductById(id, options).then(movie => {
+        const cartSection = document.querySelector(".checkout-list");
+        const movieHTML = generateMovieHTML(movie, count);
+        cartSection.innerHTML += movieHTML;
+      }).catch(error => {
+        console.error(error);
+      });
+    });
+  }
+
+  displayCart();
+        </script>
+      </section>
+    </main>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/terms.html">Terms and conditions</a></li>
+                <li><a href="/privacy.html">Privacy policy</a></li>
+              </ul>
+        </nav>
+    </footer>
+  </body>
+</html>
