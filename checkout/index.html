@@ -66,13 +66,18 @@ function generateMovieHTML(movie, count) {
       // because we fetch data async from the backend
       // the order in which the products are added might be different
       // this is not ideal frm a UX perspective
-      getProductById(id, options).then(movie => {
-        const cartSection = document.querySelector(".checkout-list");
-        const movieHTML = generateMovieHTML(movie, count);
-        cartSection.innerHTML += movieHTML;
-      }).catch(error => {
-        console.error(error);
-      });
+    async function fetchMovieById(id, options) {
+        try {
+            const movie = await getProductById(id, options);
+            const cartSection = document.querySelector(".checkout-list");
+            const movieHTML = generateMovieHTML(movie, count);
+            cartSection.innerHTML += movieHTML;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    fetchMovieById(id, options);
     });
   }
 

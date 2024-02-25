@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    <link href="src/css/styles.css" rel="stylesheet">
-    <link href="src/css/index.css" rel="stylesheet"/>
-    <link href="src/css/media.css" rel="stylesheet"/>
+    <link href="/src/css/styles.css" rel="stylesheet">
+    <link href="/src/css/index.css" rel="stylesheet"/>
+    <link href="/src/css/media.css" rel="stylesheet"/>
     <script src="https://kit.fontawesome.com/78ab2dacf1.js" crossorigin="anonymous"></script>
     <script src="/src/js/backend.js"></script>
     <script src="/src/js/cart.js"></script>
@@ -54,13 +54,18 @@ function generateMovieHTML(movie) {
     const movieId = urlParams.get("id");
     
     // get the movie from the backend
-    getProductById(movieId, options).then(movie => {
-      const movieSection = document.querySelector(".movie");
-      const movieHTML = generateMovieHTML(movie);
-      movieSection.innerHTML = movieHTML;
-    }).catch(error => {
-      console.error(error);
-    });
+    async function fetchMovie() {
+        try {
+            const movie = await getProductById(movieId, options);
+            const movieSection = document.querySelector(".movie");
+            const movieHTML = generateMovieHTML(movie);
+            movieSection.innerHTML = movieHTML;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    fetchMovie();
         </script>
       </section>
     </main>

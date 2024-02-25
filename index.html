@@ -6,8 +6,8 @@
     <meta name="description" content="Find your new favorite movie" />
     <title> Square Eyes | Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <link href="src/css/styles.css" rel="stylesheet">
     <link href="src/css/index.css" rel="stylesheet"/>
     <link href="src/css/media.css" rel="stylesheet"/>
@@ -59,41 +59,47 @@ function generateMovieHTML(movie) {
   const urlParams = new URLSearchParams(window.location.search);
   const selectedGenre = urlParams.get("genre");
 
-  getAllProducts(options).then(movies => {
-    // display all genres in alphabetical order
-    // first extract them from the movies
-    const genres = movies.map(movie => movie.genre);
-    // then remove duplicates
-    const uniqueGenres = [...new Set(genres)];
-    // then sort them
-    uniqueGenres.sort();
-    // then display them
-    const genresSection = document.querySelector(".cart");
-    genresSection.innerHTML += "<h2>Genres</h2>";
-    // then add the unique genres
-    uniqueGenres.forEach(genre => {
-      genresSection.innerHTML += `<a href="/index.html?genre=${genre}">${genre}</a>`;
-    });
-    // and then add an "ALL" genre
-    genresSection.innerHTML += `<a href="/index.html">All</a>`;
+  
+  (async function() {
+    try {
+      const movies = await getAllProducts(options);
 
-    // display all movies
-    const moviesSection = document.querySelector(".movies-list");
-
-    movies.forEach(movie => {
-      if (selectedGenre && movie.genre !== selectedGenre) {
-        return;
+      function createGenreFilter(movies) {
+          // display all genres in alphabetical order
+          // first extract them from the movies
+          const genres = movies.map(movie => movie.genre);
+          // then remove duplicates
+          const uniqueGenres = [...new Set(genres)];
+          // then sort them
+          uniqueGenres.sort();
+          // then display them
+          const genresSection = document.querySelector(".cart");
+          genresSection.innerHTML += "<h2>Genres</h2>";
+          // then add the unique genres
+          uniqueGenres.forEach(genre => {
+            genresSection.innerHTML += `<a href="/index.html?genre=${genre}">${genre}</a>`;
+          });
+          // and then add an "ALL" genre
+          genresSection.innerHTML += `<a href="/index.html">All</a>`;
       }
-      const movieHTML = generateMovieHTML(movie);
-      moviesSection.innerHTML += movieHTML;
-    });
-}).catch(error => {
-    console.error(error);
-});
 
+      createGenreFilter(movies);
 
+      // display all movies
+      const moviesSection = document.querySelector(".movies-list");
 
-        </script>
+      movies.forEach(movie => {
+        if (selectedGenre && movie.genre !== selectedGenre) {
+          return;
+        }
+        const movieHTML = generateMovieHTML(movie);
+        moviesSection.innerHTML += movieHTML;
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  })();
+  </script>
       </section>
     </main>
     <footer>
