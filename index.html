@@ -87,12 +87,14 @@ function generateMovieHTML(movie) {
           // then display them
           const genresSection = document.querySelector(".cart");
           genresSection.innerHTML += "<h2>Genres</h2>";
+          genresSection.innerHTML += "<ul>";
           // then add the unique genres
           uniqueGenres.forEach(genre => {
-            genresSection.innerHTML += `<a href="/index.html?genre=${genre}">${genre}</a>`;
+            genresSection.innerHTML += `<li><a href="/index.html?genre=${genre}">* ${genre}</a></li>`;
           });
           // and then add an "ALL" genre
-          genresSection.innerHTML += `<a href="/index.html">All</a>`;
+          genresSection.innerHTML += `<a href="/index.html">* All</a>`;
+          genresSection.innerHTML += "</ul>";
       }
 
       createGenreFilter(movies);
