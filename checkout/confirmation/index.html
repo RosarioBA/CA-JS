@@ -29,7 +29,9 @@
       </nav>
     </header>
     <main class="confirmation">
-      <section class="cart">
+        <section class="errors">
+        </section>
+        <section class="cart">
         <h1>Films</h1>
         <div class="checkout-list">
         </div>
@@ -65,7 +67,7 @@ function generateMovieHTML(movie, count) {
             const movieHTML = generateMovieHTML(movie, count);
             cartSection.innerHTML += movieHTML;
         } catch (error) {
-            console.error(error);
+            displayErrors(error);
         }
     }
 

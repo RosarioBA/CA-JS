@@ -28,8 +28,10 @@
         </ul>
       </nav>
     </header>
-    <main class="films">         
-      <section class="movie">
+    <main class="films">
+        <section class="errors">
+        </section>
+        <section class="movie">
         <h1>Flms</h1>
         <script>
 function generateMovieHTML(movie) {
@@ -55,7 +57,7 @@ function generateMovieHTML(movie) {
             const movieHTML = generateMovieHTML(movie);
             movieSection.innerHTML = movieHTML;
         } catch (error) {
-            console.error(error);
+            displayErrors(error);
         }
     }
 

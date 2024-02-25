@@ -34,6 +34,8 @@
         <!--div class="cart-content">
           <div class="cart-items"-->
       </section>
+      <section class="errors">
+      </section>
       <section class="movies-list">
         <h1>Films</h1>
 
@@ -62,6 +64,8 @@ function generateMovieHTML(movie) {
   
   (async function() {
     try {
+      // for testing the errors
+      // throw new Error("This is an error");
       const movies = await getAllProducts(options);
 
       function createGenreFilter(movies) {
@@ -96,7 +100,7 @@ function generateMovieHTML(movie) {
         moviesSection.innerHTML += movieHTML;
       });
     } catch (error) {
-      console.error(error);
+      displayErrors(error);
     }
   })();
   </script>

@@ -69,3 +69,9 @@ if (runTestCode) {
     displayCart("after removing all 1");
 }
 
+function displayErrors(error) {
+  const errorsSection = document.querySelector(".errors");
+  errorsSection.innerHTML = `<p>Error: ${error.message}</p>`;
+  // logging the error to the console is acceptable for now
+  console.error(error);
+}
