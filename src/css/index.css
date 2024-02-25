@@ -42,6 +42,10 @@
     font-size: 1.3em;
 }
 
+a {
+    color: white;
+}
+
 /*shopping-cart*/
 .fas fa-cart-shopping
 /*new*/
