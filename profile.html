@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Find your new favorite movie" />
-    <title> Square Eyes | Home</title>
+    <title> Square Eyes | Movie</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="src/css/styles.css" rel="stylesheet">
-    <link href="src/css/films.css" rel="stylesheet"/>
-    <link href="src/css/media.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link href="/src/css/styles.css" rel="stylesheet">
+    <link href="/src/css/index.css" rel="stylesheet"/>
+    <link href="/src/css/media.css" rel="stylesheet"/>
     <script src="https://kit.fontawesome.com/78ab2dacf1.js" crossorigin="anonymous"></script>
-    <script src="src/js/backend.js"></script>
+    <script src="/src/js/backend.js"></script>
+    <script src="/src/js/frontend.js"></script>
   </head>
-  <body class="background">
+  <body class="frontpage">
     <header>
       <a href="index.html" class="logo"></a>
       <label for="hamburger-menu"><i class="fa-solid fa-bars"></i></label>
@@ -22,74 +23,51 @@
       <nav>
         <ul>
           <li><a href="/index.html">Home</a></li>
-          <li><a href="/terms.html">About</a></li>
-          <li><a href="/privacy.html">Contact</a></li>
+          <li><a href="/profile.html">Profile</a></li>
         </ul>
       </nav>
     </header>
     <main class="films">
-      <section>
-        <h1>Films</h1>
-        <h2>New Releases</h2>
-      </section>
-      <section>
-        <div class="new-releases">
-            <div class="movie-selection">
-                <a href="../html-css-course-assignment-RosarioBA/Product/moviespe.html">
-                    <img src="src/css/Images/hidden by the moon.png" alt="Hidden By The Moon" class="movie_images">
-                </a>
-                <img src="src/css/Images/skeleton.jpg" alt="Skeleton">
-                <img src="src/css/Images/belonging to time.png" alt="Belonging To Time">
-                <img src="src/css/Images/enemies of the stars.png" alt="Enemies Of The Stars">
-                <img src="src/css/Images/unplugged.png" alt="Unplugged">
-                <img src="src/css/Images/hated by the sun.png" alt="Hated By The Sun">
-                <img src="src/css/Images/separated by sunset.png" alt="Separated by sunset">
-                <img src="src/css/Images/an italian romance.png" alt="An Italian Romance">
-            </div>
-            </div>
+        <section class="errors">
         </section>
-        <h2>Romance</h2>
+        <section class="profile">
+        <h1>Profile</h1>
+        <script>
+function generateProfileHTML(profile) {
+  return `
+    <div>
+        <p>Name: ${profile.name}</p>
+        <p>Avatar: ${profile.email}</p>
+        <p>Bio: ${profile.bio}</p>
+        <img src="${profile.avatar.url}" alt="${profile.avatar.alt}" style="height: 100px;"/>
+    </div>
+  `;
+  }
+
+    async function fetchProfile() {
+        try {
+            // from backend.js - could be refreshed
+            const profile = loginResult.data;
+            const profileSection = document.querySelector(".profile");
+            const profileHTML = generateProfileHTML(profile);
+            profileSection.innerHTML = profileHTML;
+        } catch (error) {
+            displayErrors(error);
+        }
+    }
+
+    fetchProfile();
+        </script>
       </section>
-      <section>
-        <div class="new-releases">
-            <div class="movie-selection">
-                <img src="src/css/Images/dear of eternity.png" alt="Dear Of Eternity" class="movie_images">
-                <img src="src/css/Images/whispers of.png" alt="whisper Of">
-                <img src="src/css/Images/belonging to time.png" alt="Belonging To Time">
-                <img src="src/css/Images/due us apart.png" alt="Due us Apart">
-                <img src="src/css/Images/assemble.png" alt="Assemble">
-                <img src="src/css/Images/the sky will tell.png" alt="The Sky Will Tell">
-                <img src="src/css/Images/looking for love.png" alt="looking For love">
-                <img src="src/css/Images/an italian romance.png" alt="An Italian Romance">
-            </div>
-            </div>
-        </section>
-        <h2>Just For You</h2>
-      </section>
-      <section>
-        <div class="new-releases">
-            <div class="movie-selection">
-                <img src="src/css/Images/greek cuisine.png" alt="Greek Cuisine" class="movie_images">
-                <img src="src/css/Images/skeleton.jpg" alt="Skeleton">
-                <img src="src/css/Images/belonging to time.png" alt="Belonging To Time">
-                <img src="src/css/Images/fashion around the world.png" alt="Fashion Around The World">
-                <img src="src/css/Images/unplugged.png" alt="Unplugged">
-                <img src="src/css/Images/assemble.png" alt="Assemble">
-                <img src="src/css/Images/hated by the sun.png" alt="Hated By The Sun">
-                <img src="src/css/Images/an italian romance.png" alt="An Italian Romance">
-            </div>
-            </div>
-        </section>
-            </main>
-            <footer>
-                <nav>
-                    <ul>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="">Terms and Privacy</a></li>
-                        <li><a href="">Cookies</a></li>
-                        <li><a href="">Help Center</a></li>
-                    </ul>
-                </nav>
-            </footer>
-    </body>
-    </html>
+    </main>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/terms.html">Terms and conditions</a></li>
+                <li><a href="/privacy.html">Privacy policy</a></li>
+              </ul>
+        </nav>
+    </footer>
+  </body>
+</html>
