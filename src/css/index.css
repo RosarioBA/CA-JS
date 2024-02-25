@@ -50,31 +50,31 @@ a {
 .fas fa-cart-shopping
 /*new*/
 
-.movie-single p a {
-    display: flex;
-    flex-direction: column;
-    /*justify-content: center;*/
-    margin: auto;
-    padding: auto;
-    min-height: 100vh;
-    max-width: 100%;
+.films {
+    margin: 10px;   
 }
-.movie-single p a > *{
+
+.movie-single {
+    display: flex;
+    flex-direction: row;
+
+    margin: 20px
+}
+
+.movie-single > *{
     flex: 1;
 }
-.movie-single p a img {
+.movie-single img {
     max-width: 100%;
-    height: 200px;
-    margin: 0;
+    height: 317px;
+    margin: 0px 35px;
+    object-fit: scale-down;
     padding: 0;
 }
 
-.movie-single p a p{
- /*   display: flex;
-    flex-direction: column;*/
+.movie-single div {
     font-size: 1.3em;
     color: white;
-    text-align: center;
     margin: 0;
     padding: 0;
 }
